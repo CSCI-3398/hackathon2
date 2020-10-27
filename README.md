@@ -52,9 +52,11 @@ Setting this up for Windows proved very challenging. I am recommending that Wind
 unzip <the name of the zip file you just uploaded>
 ```
 
-5. Follow the instructions for **1.1 Installation**, above.
+5. Follow the instructions for **1.1 Installation**, above, and then following the remaining instructions starting with 2.1. 
 
-6. When you are done, download your `lm` and `dic` files to your own computer. Then upload them to your GitHub repo, along with the pdf with your answers to the questions.
+6. Edit the files you need to edit directly in CoCalc by clicking on `File`, then navigating to the file you want to edit.
+
+7. When you are ready to submit, download your `lm` and `dic` files to your own computer. Then upload them to your GitHub repo, along with the pdf with your answers to the questions.
 
 
 ## Part 2: Build the baseline system
