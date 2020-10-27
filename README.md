@@ -60,7 +60,7 @@ Look at the files in the `model_architecture` directory and answer the following
 
 **Q3: Some of these files contain lists of triphones. Look at the headers in one of these files to get a sense of what the different fields are, then tell me (1) what triphone this represents, and (2) give an example of a word containing this triphone:**
 
-AE   K   B b    n/a    1 2500 2501 2502 2503 2504    N
+``AE   K   B b    n/a    1 2500 2501 2502 2503 2504    N``
 
 ### 2.2 Lexicon (Pronunciation Model)
 
