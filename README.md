@@ -209,8 +209,6 @@ If want a chance at 9 out of 10 or 10 out of 10, continue on.
 
 ## Part 6: Continuing to improve performance
 
-### Option 1: Improving your existing models
-
 Here are some possibilities:
 
 * Continue adding as many sentences to your corpus as you can, either manually or using a script that generates new sentences based on the patterns you observe in the data.
