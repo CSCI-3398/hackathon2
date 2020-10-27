@@ -52,7 +52,9 @@ Setting this up for Windows proved very challenging. I am recommending that Wind
 unzip <the name of the zip file you just uploaded>
 ```
 
-4. Follow the instructions for **1.1 Installation**, above.
+5. Follow the instructions for **1.1 Installation**, above.
+
+6. When you are done, download your `lm` and `dic` files to your own computer. Then upload them to your GitHub repo, along with the pdf with your answers to the questions.
 
 
 ## Part 2: Build the baseline system
