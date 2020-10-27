@@ -5,8 +5,8 @@ In this hackathon, you will be building an ASR system and using it to recognize 
 By 11:59pm on Thursday 10/29, push: 
 
 * a PDF containing your answers to the questions (marked in boldface, beginning with Q)
-* your best performing language model (firstname_lastname.lm)
-* your best performing lexicon (firstname_lastname.dic file)
+* your best performing language model
+* your best performing lexicon
 
 As you know, it is common practice to refine your models on a held-out development (*dev*) set of data and to then use a disjoint and unseen test set for final verification of your models. I have provided a development set of recordings and transcriptions. When you have submitted your best grammar and lexicon, I will test your work on a separate test set of recordings and transcriptions that is similar but not identical to the development set given to you. 
 
