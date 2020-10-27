@@ -5,8 +5,8 @@ In this hackathon, you will be building an ASR system and using it to recognize 
 By 11:59pm on Thursday 10/29, push: 
 
 * a PDF containing your answers to the questions (marked in boldface, beginning with Q)
-* your best performing language model
-* your best performing lexicon
+* your best performing language model (`best.lm`)
+* your best performing lexicon (`best.dic`)
 
 As you know, it is common practice to refine your models on a held-out development (*dev*) set of data and to then use a disjoint and unseen test set for final verification of your models. I have provided a development set of recordings and transcriptions. When you have submitted your best grammar and lexicon, I will test your work on a separate test set of recordings and transcriptions that is similar but not identical to the development set given to you. 
 
@@ -32,7 +32,7 @@ After you have cloned your repository, On Linux or Max OSX, follow these command
       tar zxf pocketsphinx-0.5-20080912.tar.gz
       cd pocketsphinx-0.5
       ./build_all_static.sh
-      cd ../hackaton2_data
+      cd ../h2
       ../pocketsphinx-0.5/pocketsphinx/scripts/setup_sphinx.pl -task rm     
 ```
 
@@ -40,7 +40,7 @@ After you have cloned your repository, On Linux or Max OSX, follow these command
 
 If you are using the Windows 10 unix option (which you should be doing by now in your CS career), you should be able to follow the instructions above.
 
-If you are a Windows user who works from a DOS command line, the executable programs (`.exe` files) needed are included in the `hackathon2_data\bin` directory. You will need to have Perl installed (e.g., Active Perl). You should verify that you have a working version of Perl before proceeding by opening your DOS command line, navigating to the `hackathon2_data` directory, and running:
+If you are a Windows user who works from a DOS command line, the executable programs (`.exe` files) needed are included in the `h2\bin` directory. You will need to have Perl installed (e.g., Active Perl). You should verify that you have a working version of Perl before proceeding by opening your DOS command line, navigating to the `h2` directory, and running:
 
       perl scripts_pl\00.verify\verify_all.pl 
     
@@ -78,11 +78,11 @@ I have provided a lexicon file `baseline.corpus.dic` containing all of the above
 
 To build an n-gram language model, you need a sufficiently large sample of representative text. In real-world systems this is usually collected from digital text resources such as newswires and web sites, or it is created by transcribing speech data. In this case, you will be creating it from scratch. Roughly, you need to create a text file which has many examples of the way people can order pizzas within the limits of the pizza ordering language described above. This text file should be a plain text file consisting of one sentence per line with beginning and end of sentence tags. Punctuation is not needed.
 
-I have given you a very tiny corpus in the `hackathon2_data` directory, called `baseline.corpus`. You'll see that it's just a list of sentences, one per line, each beginning with `<s>` and ending with `</s>`.
+I have given you a very tiny corpus in the `h2` directory, called `baseline.corpus`. You'll see that it's just a list of sentences, one per line, each beginning with `<s>` and ending with `</s>`.
 
 **NOTE: When you open this file and edit it with an application like TextEdit, it will often try to save it as rich text or UTF-16. If this happens, it's likely that you'll get errors later on. If you can, use a real text editor (e.g., emacs, vim) or open the files needed for this activity in an IDE that will not automatically convert everything to rtf or UTF-16.**
 
-You can build a trigram language model from this corpus using the  `quick_lm.pl` script in the `hackathon2_data` directory, as follows:
+You can build a trigram language model from this corpus using the  `quick_lm.pl` script in the `h2` directory, as follows:
 
 ```
       perl quick_lm.pl -s baseline.corpus    
@@ -94,7 +94,7 @@ This will create a language model file called `baseline.corpus.lm` and a lexicon
 
 Now you should run the speech recognizer in "batch mode" to test the models that you have built. This requires you to have, in addition to the acoustic model, language model, and dictionary, the following files (which I have provided for you):
 
-* A control file listing the names of the files you wish to recognize, minus the base directory and file extension. Use `pizza_devel.fileids` in the `lab2_data/etc directory`.
+* A control file listing the names of the files you wish to recognize, minus the base directory and file extension. Use `pizza_devel.fileids` in the `h2/etc directory`.
 * A configuration file containing the command-line arguments for the recognizer. To see the list of all possible options, you can simply run the recognizer (bin/pocketsphinx.batch on Unix/Mac OSX or bin\pocketsphinx_batch.exe on Windows) with no arguments. I have created one for you called baseline.cfg.
 
 These files I have provided are are both ready to go for this example, so you should be able to run the recognizer without changing anything, like this:
@@ -193,7 +193,7 @@ Then regenerate your language model and lexicon in the same way as above. Alter 
 
 **Q11: Why do you think it's so much worse?**
 
-At this point, you have likely improved somewhat over the baseline provided. If you're happy with earning 8 out of 10 points on this assignment, simply turn in your best `.lm` and `.dic` files, along with a pdf containing answers to questions 1-11 above.
+At this point, you have likely improved somewhat over the baseline provided. If you're happy with earning 8 out of 10 points on this assignment, simply turn in your best `.lm` and `.dic` files (call then `best.lm` and `best.dic`), along with a pdf containing answers to questions 1-11 above.
 
 If want a chance at 9 out of 10 or 10 out of 10, continue on.
 
