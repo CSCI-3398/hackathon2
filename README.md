@@ -18,9 +18,9 @@ The student or students with the lowest WER on the test set will have their seco
 
 Today you will learn how to build a speech recognizer using the Carnegie Mellon University Sphinx system, which is a traditional statistical ASR system. Sphinx is not state-of-the-art, but it is easy to use! There are three major components that go into most typical statistical ASR systems:
 
-1. The Acoustic model defines the acoustic units of recognition and the statistical models used to identify them. It is constructed by a training process which takes segmented audio data and the corresponding transcriptions as its input.
+1. The Acoustic Model defines the acoustic units of recognition and the statistical models used to identify them. It is constructed by a training process which takes segmented audio data and the corresponding transcriptions as its input.
 2. The Lexicon (or pronunciation model) defines the mapping of words to acoustic units. It is constructed by hand, or by using trained letter to sound rules, or frequently some combination of the two.
-3. The Language model (LM, also called a "grammar") defines the set of possible sentences that can be recognized, as well as their relative prior probabilities.
+3. The Language Model (LM, also called a "grammar") defines the set of possible sentences that can be recognized, as well as their relative prior probabilities.
 
 ## Part 1: Install the required data and tools
 
@@ -74,7 +74,7 @@ This is followed by the size of pizza requested, either "small", "medium", "larg
 
 I have provided a lexicon file `baseline.corpus.dic` containing all of the above words with one pronunciation each. This file will be used in your baseline system.
 
-### 2.3 n-gram Language Model (a.k.a. "grammar")
+### 2.3 N-gram Language Model (a.k.a. "grammar")
 
 To build an n-gram language model, you need a sufficiently large sample of representative text. In real-world systems this is usually collected from digital text resources such as newswires and web sites, or it is created by transcribing speech data. In this case, you will be creating it from scratch. Roughly, you need to create a text file which has many examples of the way people can order pizzas within the limits of the pizza ordering language described above. This text file should be a plain text file consisting of one sentence per line with beginning and end of sentence tags. Punctuation is not needed.
 
@@ -115,20 +115,22 @@ INFO: batch.c(388): AVERAGE 0.03 xRT (CPU), 0.03 xRT (elapsed)
 You're going to have to change the configuration (`.cfg`) file later, so here's an overview of its format and contents:
 
 ```
--hmm followed by the acoustic model directory
--dict followed by the lexicon file
--lm followed by the language model
--ctl followed by the control file
+-hmm (followed by the acoustic model directory)
+-dict (followed by the lexicon file)
+-lm (followed by the language model)
+-ctl (followed by the control file)
 -adcin yes (tells the recognizer that input is audio, not feature files)
 -adchdr 44 (tells the recognizer to skip the 44-byte RIFF header)
 -cepext .wav (tells the recognizer input files have the .wav extension)
 -cepdir wav (tells the recognizer input files are in the 'wav' directory)
--hyp followed by the output transcription file
--outlatdir followed by the output directory for word lattices
-Have a look at the configuration file to see what files you just used to build your model. Remember that all filenames in the configuration file are interpreted relative to the current directory.
+-hyp (followed by the output transcription file)
+-outlatdir (followed by the output directory for word lattices)
 ```
 
-## Part 4: Testing your reecognizer
+Have a look at the configuration file to see what files you just used to build your model. Remember that all filenames in the configuration file are interpreted relative to the current directory.
+
+
+## Part 4: Testing your recognizer
 
 The recognition results can now be found in the file `pizza_devel.hyp`. You will now compute the word error rate (WER), which is the standard method for evaluating speech recognition systems. The script `word_align.pl` in the `scripts_pl/decode` directory compares the reference transcription to the recognition results and reports the error rate for each sentence, followed by the overall error rate. You can run it like this:
 
@@ -136,7 +138,7 @@ The recognition results can now be found in the file `pizza_devel.hyp`. You will
     perl scripts_pl/decode/word_align.pl etc/pizza_devel.transcription pizza_devel.hyp     
 ```
 
-The final three lines of its output will report the number of errors and the error rate.
+The final three lines of its output will report the number of errors and the error rate over the whole set of sentences decoded.
 
 **Q4: What is the baseline WER?**
 
@@ -153,9 +155,11 @@ There are other words in the lexicon that can have multiple pronunciations, depe
 
 Re-run the recognizer using your improved lexicon file.
 
+```
     bin/pocketsphinx_batch baseline.cfg     
     perl scripts_pl/decode/word_align.pl etc/pizza_devel.transcription pizza_devel.hyp     
-    
+```
+
 **Q5: What is your new WER?**
 
 **Q6: Give a few examples of the pronunciations you added and explain why you think they might have helped to improve perfomance (if they did).**
