@@ -36,7 +36,7 @@ After you have cloned your repository, On Linux or Max OSX, follow these command
       ../pocketsphinx-0.5/pocketsphinx/scripts/setup_sphinx.pl -task rm     
 ```
 
-### 1.2 Windows users
+### 1.2 Windows users (or Mac users who don't have `gcc` installed)
 
 Setting this up for Windows proved very challenging. I am recommending that Windows users use the unix emulator [CoCalc](https://cocalc.com/)  by following these directions:
 
