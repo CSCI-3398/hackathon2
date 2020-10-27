@@ -1,6 +1,6 @@
 # Hackathon 2
 
-In this hackathon, you will be building an ASR system and using it to recognize speech in the form of a set of audio recordings of people placing pizza orders and transcriptions of those recordings. You will calculate the word error rate (WER) of a baseline system and try to improve the WER by modifying the pronunciation and language models. You'll be completing this lab independentlyor with one classmate in a team of two.
+In this hackathon, you will be building an ASR system and using it to recognize speech in the form of a set of audio recordings of people placing pizza orders and transcriptions of those recordings. You will calculate the word error rate (WER) of a baseline system and try to improve the WER by modifying the pronunciation and language models. You'll be completing this lab independently or in teams of two
 
 By 11:59pm on Thursday 10/29, push: 
 
