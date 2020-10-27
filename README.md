@@ -36,7 +36,7 @@ After you have cloned your repository, On Linux or Max OSX, follow these command
       ../pocketsphinx-0.5/pocketsphinx/scripts/setup_sphinx.pl -task rm     
 ```
 
-### 1.2 Installing on Windows?
+### 1.2 Installing on Windows
 
 If you are using the Windows 10 unix option (which you should be doing by now in your CS career), you should be able to follow the instructions above.
 
@@ -44,7 +44,7 @@ If you are a Windows user who works from a DOS command line, the executable prog
 
       perl scripts_pl\00.verify\verify_all.pl 
     
-When I was last able to test this, I was able to call the commands shown in Part 2 through the end from the DOS cmd. When you call a binary (i.e., something that doesn't have a file extension in the commands below), you'll probably need to add `.exe`. And when you call a perl script (ending in `.pl`), you might need to preface the command with the word perl.
+When I was last able to test this, I was able to call the commands shown in Part 2 through the end from the DOS command line. When you call a binary (i.e., something that doesn't have a file extension in the commands below), you'll probably need to add `.exe`. And when you call a perl script (ending in `.pl`), you might need to preface the command with the word `perl`.
 
 ## Part 2: Build the baseline system
 
@@ -138,7 +138,7 @@ The recognition results can now be found in the file `pizza_devel.hyp`. You will
 
 The final three lines of its output will report the number of errors and the error rate.
 
-**Q5: What is the baseline WER?**
+**Q4: What is the baseline WER?**
 
 ## Part 5: Improving the baseline system
 
@@ -156,9 +156,9 @@ Re-run the recognizer using your improved lexicon file.
     bin/pocketsphinx_batch baseline.cfg     
     perl scripts_pl/decode/word_align.pl etc/pizza_devel.transcription pizza_devel.hyp     
     
-**Q6: What is your new WER?**
+**Q5: What is your new WER?**
 
-**Q7: Give a few examples of the pronunciations you added and explain why you think they might have helped to improve perfomance (if they did).**
+**Q6: Give a few examples of the pronunciations you added and explain why you think they might have helped to improve perfomance (if they did).**
 
 
 ### 5.2 Improving the the language model
@@ -169,11 +169,11 @@ Make a copy of the `baseline.corpus` file called `larger.corpus` and add an addi
 
 Now alter your configuration file (or create a new one) that includes the names of your newly created lm and lexicon. Then run the recognizer with that configuration file.
 
-**Q8: What is your new WER?**
+**Q7: What is your new WER?**
 
-**Q9: Is your new lexicon longer than the baseline lexicon? Why?**
+**Q8: Is your new lexicon longer than the baseline lexicon? Why?**
 
-**Q10: Visually inspect and compare the two .lm files. What differences do you see?**
+**Q9: Visually inspect and compare the two .lm files. What differences do you see?**
 
 
 ### 5.3 Degrading performance in a few easy steps!
@@ -185,13 +185,13 @@ Go to news.google.com, select an article that interests you, and copy the first 
 
 Then regenerate your language model and lexicon in the same way as above. Alter your configuration file (or create a new one), and run the recognizer with your new grammar and new lexicon built on the random article from news.google.com.
 
-**Q11: What is your new WER?**
+**Q10: What is your new WER?**
 
-**Q12: Why do you think it's so much worse?**
+**Q11: Why do you think it's so much worse?**
 
-At this point, you have likely improved somewhat over the baseline provided. If you're happy with earning a "meets expectations" (8 out of 10 points) on this assignment, simply turn in your best `.lm` and `.dic` files, along with a pdf containing answers to questions 1-12 above.
+At this point, you have likely improved somewhat over the baseline provided. If you're happy with earning 8 out of 10 points on this assignment, simply turn in your best `.lm` and `.dic` files, along with a pdf containing answers to questions 1-11 above.
 
-If you're having fun and would like to learn more and want a chance at "exceeds expectations" (9 out of 10) or even "outstanding" (10 out of 10), continue on.
+If want a chance at 9 out of 10 or 10 out of 10, continue on.
 
 ## Part 6: Continuing to improve performance
 
@@ -204,4 +204,4 @@ Here are some possibilities:
 * Listen to the recordings and strategically add new pronunciations to your lexicon.
 * Build a language model using fancier tools (srilm, OpenGRM, kenlm) on a very large corpus. (The quick_lm.pl script is not designed to handle larger corpora, and so you should not try to use it on more than a few thousand sentences.)
 
-**Q13 (if seeking 9/10 or 10/10): What is your very best WER?#**
+**Q12 (if seeking 9/10 or 10/10): What is your very best WER?**
