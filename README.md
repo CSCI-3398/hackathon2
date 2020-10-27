@@ -1,4 +1,4 @@
-# Lab/Hackathon 2
+# Hackathon 2
 
 In this hackathon, you will be building an ASR system and using it to recognize speech in the form of a set of audio recordings of people placing pizza orders and transcriptions of those recordings. You will calculate the word error rate (WER) of a baseline system and try to improve the WER by modifying the pronunciation and language models. You'll be completing this lab independentlyor with one classmate in a team of two.
 
@@ -140,14 +140,15 @@ The final three lines of its output will report the number of errors and the err
 
 **Q5: What is the baseline WER?**
 
-Part 5: Improving the baseline system
+## Part 5: Improving the baseline system
 
-4.1 Improving the lexicon (pronunciation model)
+### 5.1 Improving the lexicon (pronunciation model)
 
 Take a look at the lexicon file, baseline.corpus.dic. You'll see that there is one word that has two pronunciations: "AND".
 
 AND     AH N D
 AND(2)  AE N D 
+
 There are other words in the lexicon that can have multiple pronunciations, depending on personal preference, rate of speech, or dialect. Add some additional pronunciations to the lexicon file, remembering to add them one per line and to use the special numbering notation.
 
 Re-run the recognizer using your improved lexicon file.
@@ -155,55 +156,52 @@ Re-run the recognizer using your improved lexicon file.
     bin/pocketsphinx_batch baseline.cfg     
     perl scripts_pl/decode/word_align.pl etc/pizza_devel.transcription pizza_devel.hyp     
     
-Q6: What is your new WER?
+**Q6: What is your new WER?**
 
-Q7: Give a few examples of the pronunciations you added and explain why you think they might have helped to improve perfomance (if they did).
+**Q7: Give a few examples of the pronunciations you added and explain why you think they might have helped to improve perfomance (if they did).**
 
 
-4.2 Improving the grammar (the language model)
+### 5.2 Improving the the language model
 
 As you look at the output of the testing, you'll see how your results compare to the correct transcriptions. You will notice that there are words in the development data that do not appear in your lexicon and probably some structures that do not appear in your baseline corpus.
 
-Make a copy of the baseline.corpus file called larger.corpus and add an additional 10 sentences, keeping in mind some of the missing words and structures. Then regenerate your language model in the same way you created it above (ideally using the CMU lmtool). Don't forget to also download the .lm file!
+Make a copy of the `baseline.corpus` file called `larger.corpus` and add an additional 10 sentences, keeping in mind some of the missing words and structures. Then regenerate your language model in the same way you created it above. 
 
-Alter your configuration file (or create a new one) that includes the names of your newly created lm and lexicon. Then run the recognizer with that configuration file.
+Now alter your configuration file (or create a new one) that includes the names of your newly created lm and lexicon. Then run the recognizer with that configuration file.
 
-Q8: What is your new WER?
+**Q8: What is your new WER?**
 
-Q9: Is your new lexicon longer than the baseline lexicon? Why?
+**Q9: Is your new lexicon longer than the baseline lexicon? Why?**
 
-Q10: Visually inspect and compare the two .lm files. What differences do you see?
+**Q10: Visually inspect and compare the two .lm files. What differences do you see?**
 
 
-4.3 Degrading performance in a few easy steps!
+### 5.3 Degrading performance in a few easy steps!
 
-Go to news.google.com, select an article that interests you, and copy the first ten sentences into a text file, one sentence per line. Convert the file to all uppercase like this from the command line (or using python, whichever is easier):
+Go to news.google.com, select an article that interests you, and copy the first ten sentences into a text file, one sentence per line. Convert the file to all uppercase and make sure to insert `<s>` and `</s>` at the beginning and end of each line.
 
     tr '[:lower:]' '[:upper:]' < input.txt > output.txt     
        
 
 Then regenerate your language model and lexicon in the same way as above. Alter your configuration file (or create a new one), and run the recognizer with your new grammar and new lexicon built on the random article from news.google.com.
 
-Q11: What is your new WER?
+**Q11: What is your new WER?**
 
-Q12: Why do you think it's so much worse?
+**Q12: Why do you think it's so much worse?**
 
-At this point, you have likely improved somewhat over the baseline provided. If you're happy with earning a "meets expectations" (8 out of 10 points) on this assignment, simply turn in your best .lm and .dic files, along with a pdf containing answers to questions 1-12 above.
+At this point, you have likely improved somewhat over the baseline provided. If you're happy with earning a "meets expectations" (8 out of 10 points) on this assignment, simply turn in your best `.lm` and `.dic` files, along with a pdf containing answers to questions 1-12 above.
 
 If you're having fun and would like to learn more and want a chance at "exceeds expectations" (9 out of 10) or even "outstanding" (10 out of 10), continue on.
 
-Part 6: Continuing to improve performance
+## Part 6: Continuing to improve performance
 
-Option 1: Improving your existing models
+### Option 1: Improving your existing models
 
 Here are some possibilities:
 
-Continue adding as many sentences to your corpus as you can, either manually or using a script that generates new sentences based on the patterns you observe in the data.
-Look at the output of your recognizer and strategically add new sentences to your corpus.
-Listen to the recordings and strategically add new pronunciations to your lexicon.
-Build a language model using fancier tools (srilm, OpenGRM, kenlm) on a very large corpus. (The quick_lm.pl script is not designed to handle larger corpora, and so you should not try to use it on more than a few thousand sentences.)
-Option 2: Finite-state grammars
+* Continue adding as many sentences to your corpus as you can, either manually or using a script that generates new sentences based on the patterns you observe in the data.
+* Look at the output of your recognizer and strategically add new sentences to your corpus.
+* Listen to the recordings and strategically add new pronunciations to your lexicon.
+* Build a language model using fancier tools (srilm, OpenGRM, kenlm) on a very large corpus. (The quick_lm.pl script is not designed to handle larger corpora, and so you should not try to use it on more than a few thousand sentences.)
 
-N-gram language models are not the only way to help the recognizer figure out which words are likely to come next. Although they are not typically used by LVCSR systems, finite-state grammars (FSGs) are widely used in dialogue system ASR. This page discusses how to write and use FSGs within Sphinx.
-
-Q13 (if seeking 9/10 or 10/10): What is your very best WER?#
+**Q13 (if seeking 9/10 or 10/10): What is your very best WER?#**
