@@ -1,10 +1,10 @@
 # Hackathon 2
 
-In this hackathon, you will be building an ASR system and using it to recognize speech in the form of a set of audio recordings of people placing pizza orders and transcriptions of those recordings. You will calculate the word error rate (WER) of a baseline system and try to improve the WER by modifying the pronunciation and language models. You'll be completing this lab independently or in teams of two
+In this hackathon, you will be building an ASR system and using it to recognize speech in the form of a set of audio recordings of people placing pizza orders and transcriptions of those recordings. You will calculate the word error rate (WER) of a baseline system and try to improve the WER by modifying the pronunciation and language models. You'll be completing this lab independently or in teams of two.
 
-By 11:59pm on Thursday 10/29, push: 
+By 11:59pm on Thursday 10/29, push the following three files to your repo: 
 
-* a PDF containing your answers to the questions (marked in boldface, beginning with Q)
+* a PDF containing your answers to the questions marked in boldface, beginning with Q (`hackathon2.pdf`)
 * your best performing language model (`best.lm`)
 * your best performing lexicon (`best.dic`)
 
@@ -25,10 +25,10 @@ Today you will learn how to build a speech recognizer using the Carnegie Mellon 
 ## Part 1: Install the required data and tools
 
 ### 1.1 Installation (Linux or Mac)
-After you have cloned your repository, On Linux or Max OSX, follow these commands below in a terinal:
+After you have cloned your repository, On Linux or Max OSX, follow these commands below in a terminal:
       
 ```
-      cd hackathon2
+      cd <fill in the name of your repo here>
       tar zxf pocketsphinx-0.5-20080912.tar.gz
       cd pocketsphinx-0.5
       ./build_all_static.sh
@@ -36,15 +36,24 @@ After you have cloned your repository, On Linux or Max OSX, follow these command
       ../pocketsphinx-0.5/pocketsphinx/scripts/setup_sphinx.pl -task rm     
 ```
 
-### 1.2 Installing on Windows
+### 1.2 Windows users
 
-If you are using the Windows 10 unix option (which you should be doing by now in your CS career), you should be able to follow the instructions above.
+Setting this up for Windows proved very challenging. I am recommending that Windows users use the unix emulator [CoCalc](https://cocalc.com/)  by following these directions:
 
-If you are a Windows user who works from a DOS command line, the executable programs (`.exe` files) needed are included in the `h2\bin` directory. You will need to have Perl installed (e.g., Active Perl). You should verify that you have a working version of Perl before proceeding by opening your DOS command line, navigating to the `h2` directory, and running:
+1. Download your repo as a `.zip` file from GitHub (green `Code` button -> `Download Zip`). 
 
-      perl scripts_pl\00.verify\verify_all.pl 
-    
-When I was last able to test this, I was able to call the commands shown in Part 2 through the end from the DOS command line. When you call a binary (i.e., something that doesn't have a file extension in the commands below), you'll probably need to add `.exe`. And when you call a perl script (ending in `.pl`), you might need to preface the command with the word `perl`.
+2. Go to https://cocalc.com/. Create an account if you want to be able to save your work.
+
+3. Use the `Upload` option in CoCalc to upload the `.zip` file from your computer. This will be a bit slow -- be patient.
+
+4. From the terminal command line in CoCalc, type
+
+```
+unzip <the name of the zip file you just uploaded>
+```
+
+4. Follow the instructions for **1.1 Installation**, above.
+
 
 ## Part 2: Build the baseline system
 
@@ -183,9 +192,6 @@ Now alter your configuration file (or create a new one) that includes the names 
 ### 5.3 Degrading performance in a few easy steps!
 
 Go to news.google.com, select an article that interests you, and copy the first ten sentences into a text file, one sentence per line. Convert the file to all uppercase and make sure to insert `<s>` and `</s>` at the beginning and end of each line.
-
-    tr '[:lower:]' '[:upper:]' < input.txt > output.txt     
-       
 
 Then regenerate your language model and lexicon in the same way as above. Alter your configuration file (or create a new one), and run the recognizer with your new grammar and new lexicon built on the random article from news.google.com.
 
